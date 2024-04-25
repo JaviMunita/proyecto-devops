@@ -8,11 +8,24 @@ pipeline {
             stages {
                 stage('checkout') {
                     steps {
-                        echo "hola mundo"
+                        checkout scm
                     }
-
+                }
+                stage('instalar dependencias') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
+                stage('ejecutar tests') {
+                    steps {
+                        sh 'npm run test'
+                    }
+                }
+                stage('realizar build') {
+                    sh npm run build
                 }
             }
         }
     }
 }
+
