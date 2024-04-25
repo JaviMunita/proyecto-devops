@@ -1,9 +1,12 @@
 pipeline {
-    agent {
-        docker { image 'node:20.11.1-alpine3.19' }
-    }
+    agent docker
     stages {
-        stage('checkout') {
+        stage('node pipeline') {
+            agent {
+                docker { image 'node:20.11.1-alpine3.19' }
+            }
+            stages {
+                stage('checkout') {
                     steps {
                         checkout scm
                     }
@@ -24,5 +27,7 @@ pipeline {
                         sh 'npm run build'
                     }
                 }
+            }
+        }
     }
 }
