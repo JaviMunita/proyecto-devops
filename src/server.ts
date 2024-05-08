@@ -22,6 +22,4 @@ app.post("/calcular", (req, res) => {
   return res.send({ resultado: "hola mundo" });
 });
 
-
-
 export default app;
