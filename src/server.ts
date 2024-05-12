@@ -8,6 +8,11 @@ app.get("/", (req, res) => {
   res.send("hola mundo");
 });
 
+const ambiente = process.env.NODE_ENV || "desconocido";
+app.get("/ambiente", (req, res) => {
+  res.send(`El ambiente es: ${ambiente}`);
+});
+
 app.post("/calcular", (req, res) => {
   const operacion = req.body;
   if (operacion.operacion === "add") {

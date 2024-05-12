@@ -1,21 +1,14 @@
-# services:
-#   mi-app:
-#     image: localhost:8082/mi-proyecto-devops
-#     restart: always
-#     ports:
-#       - "3000:3000"
-#     environment:
-#       NODE_ENV: development
-#       API_KEY: /run/secrets/api-key
-#     secrets:
-#       - api-key
-# secrets:
-#   api-key:
-#     file: key.txt
-
-name: proyecto-devops
 services:
-  backend:
-    image:
+  mi-app:
+    image: localhost:8082/mi-proyecto-devops
+    restart: always
+    ports:
+      - "3000:3000"
     environment:
+      - NODE_ENV=development
+      - API_KEY=/run/secrets/api-key
     secrets:
+      - api-key
+secrets:
+  api-key:
+    file: key.txt
