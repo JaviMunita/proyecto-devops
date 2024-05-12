@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('node pipeline') {
             agent {
-                docker { image 'node:20.11.1-alpine3.19' }
+                docker { 
+                    image 'node:20.11.1-alpine3.19' 
+                    reuseNode true
+                }
             }
             stages {
                 stage('checkout') {
@@ -29,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('crear imagen docker') {
+          stage('crear imagen docker') {
             steps {
                 sh 'docker build -t mi-proyecto-devops .'
             }
