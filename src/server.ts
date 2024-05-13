@@ -13,6 +13,11 @@ app.get("/ambiente", (req, res) => {
   res.send(`El ambiente es: ${ambiente}`);
 });
 
+const apiKey = fs.readFileSync("/run/secrets/api-key/key.txt", "utf8");
+app.get("/api", (req, res) => {
+  res.send(`El api-key es: ${apiKey}`);
+});
+
 app.post("/calcular", (req, res) => {
   const operacion = req.body;
   if (operacion.operacion === "add") {
